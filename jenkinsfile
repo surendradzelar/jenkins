@@ -18,7 +18,8 @@ pipeline{
      } 
 
     stages{
-        stage('one') {
+        
+        stage('one'){
             steps{
                 sh "echo ${PROJECT_NAME}"
                 sh "env"
