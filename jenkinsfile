@@ -10,8 +10,9 @@ pipeline{
         
     }
 
-    tool{
-        maven "mvn-3.6"
+
+        tool{
+            maven "mvn-3.6"
     }
      parameters {
         string(name: 'COMPONENT', defaultValue: 'Mr ZELAR', description: 'Who should I say hello to?')
