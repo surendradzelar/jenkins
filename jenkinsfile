@@ -19,7 +19,7 @@ pipeline{
     }
       tools{
             maven "mvn-3.6"
-            sh "mvn compile"
+            
     }
 
 
@@ -37,7 +37,8 @@ pipeline{
             steps{
                 sh "echo ${PROJECT_NAME}"
                 sh "env"
-                
+                sh "mvn compile"
+                sh "mvn test"
             }
         }
         stage("TWO"){
