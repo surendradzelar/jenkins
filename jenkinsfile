@@ -37,8 +37,7 @@ pipeline{
             steps{
                 sh "echo ${PROJECT_NAME}"
                 sh "env"
-                sh "mvn compile"
-                sh "mvn test"
+                sh "mvn clean package"
             }
         }
         stage("TWO"){
