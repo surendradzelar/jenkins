@@ -2,9 +2,9 @@ pipeline{
 
     agent any 
 
-    options{
-        disableconcurrentBuilds()
-    }
+    //options{
+        //disableconcurrentBuilds()
+    //}
     environment{
         PROJECT_NAME ="Hello"
         
@@ -18,7 +18,7 @@ pipeline{
      } 
 
     stages{
-        
+
         stage('one'){
             steps{
                 sh "echo ${PROJECT_NAME}"
