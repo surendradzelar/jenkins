@@ -1,13 +1,34 @@
 pipeline{
 
-    agent any
-
-    stages{
-        stage('Hello'){
-            steps{
-                echo"Hello"
-        }
-
+    agent any 
+    options{
+        disableconcurrentBuilds()
     }
-}
+    environment{
+        PROJECT_NAME ="Hello"
+        zelar = credentials(71f1ec9f-4ece-4f18-b8e1-b8b4d4f28aff)
+    }
+     parameters {
+        string(name: 'COMPONENT', defaultValue: 'Mr ZELAR', description: 'Who should I say hello to?')
+        text(name: 'COMMENT', defaultValue: '', description: 'Enter some information about the person')
+        booleanParam(name: 'FORCE_DEPLOY', defaultValue: true, description: 'Toggle this value')
+        choice(name: 'ENV', choices: ['DEV', 'QA', 'PROD'], description: 'Pick something')
+        password(name: 'PASSWORD', defaultValue: 'SECRET', description: 'Enter a password')
+    stages{
+        stage('one'){
+            steps{
+                sh "echo ${PROJECT_NAME}"
+                sh "env"
+            }
+        stage("TWO"){
+            environment{
+                PROJECT_NAME="TODO"
+
+            }
+            steps{
+                sh "echo ${PROJECT_NAME}"
+            }
+        }    
+        }
+    }    
 }
