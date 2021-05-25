@@ -6,7 +6,7 @@ pipeline{
     }
     environment{
         PROJECT_NAME ="Hello"
-        //zelar_SSH_CRED = credentials(71f1ec9f-4ece-4f18-b8e1-b8b4d4f28aff_SSH)
+        
     }
      parameters {
         string(name: 'COMPONENT', defaultValue: 'Mr ZELAR', description: 'Who should I say hello to?')
@@ -31,4 +31,5 @@ pipeline{
         }    
         }
     }    
+}
 }
