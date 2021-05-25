@@ -24,6 +24,7 @@ pipeline{
                 sh "echo ${PROJECT_NAME}"
                 sh "env"
             }
+        }
         stage("TWO"){
             environment{
                 PROJECT_NAME="TODO"
@@ -33,6 +34,6 @@ pipeline{
                 sh "echo ${PROJECT_NAME}"
             }
         }    
-        }
+        
     }    
 }
