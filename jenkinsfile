@@ -9,6 +9,10 @@ pipeline{
         PROJECT_NAME ="Hello"
         
     }
+
+    tool{
+        maven "mvn-3.6"
+    }
      parameters {
         string(name: 'COMPONENT', defaultValue: 'Mr ZELAR', description: 'Who should I say hello to?')
         text(name: 'COMMENT', defaultValue: '', description: 'Enter some information about the person')
