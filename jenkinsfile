@@ -52,3 +52,28 @@ pipeline{
         
     }    
 }
+
+
+
+
+pipeline{
+
+    agent any
+
+    stages("parallel type"){
+
+        parallel{
+            stage('one'){
+                steps {
+                   sh 'sleep 100' 
+                }
+            stage('one'){
+                steps {
+                   sh 'sleep 150' 
+                }
+                    
+            }
+        }
+    }
+}
+}
