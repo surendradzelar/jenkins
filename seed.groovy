@@ -18,7 +18,7 @@ pipelineJob('CI Pipelines/frontend-ci'){
                         }
                     }
                 }
-                'scriptPath'('jenkinsfile')
+                'scriptPath'('seed.groovy')
                 'lightweight'(true)
             }
         }
@@ -40,7 +40,7 @@ pipelineJob('CI Pipelines/users-ci'){
                         }
                     }
                 }
-                'scriptPath'('jenkinsfile')
+                'scriptPath'('seed.groovy')
                 'lightweight'(true)
             }
         }
@@ -62,7 +62,7 @@ pipelineJob('CI Pipelines/login-ci'){
                         }
                     }
                 }
-                'scriptPath'('jenkinsfile')
+                'scriptPath'('seed.groovy')
                 'lightweight'(true)
             }
         }
@@ -87,7 +87,7 @@ pipelineJob('CI Pipelines/todo-ci'){
                         }
                     }
                 }
-                'scriptPath'('jenkinsfile')
+                'scriptPath'('seed.groovy')
                 'lightweight'(true)
             }
         }
