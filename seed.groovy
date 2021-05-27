@@ -8,7 +8,7 @@ pipelineJob('CI Pipelines/frontend-ci'){
                 'scm'(class:'hudson.plugins.git.GitSCM',plugin:'git') {
                     'userRemoteConfigs' {
                         'hudson.plugins.git.UserRemoteConfig' {
-                            'url'('https://github.com/dev0ps01/'+j+'.git')
+                            'url'('https://github.com/zssurendra01/jenkins.git')
 
                                    }
                     }
@@ -30,7 +30,7 @@ pipelineJob('CI Pipelines/users-ci'){
                 'scm'(class:'hudson.plugins.git.GitSCM',plugin:'git') {
                     'userRemoteConfigs' {
                         'hudson.plugins.git.UserRemoteConfig' {
-                            'url'('https://github.com/dev0ps01/'+j+'.git')
+                            'url'('https://github.com/zssurendra01/jenkins.git')
 
                                    }
                     }
@@ -52,7 +52,7 @@ pipelineJob('CI Pipelines/login-ci'){
                 'scm'(class:'hudson.plugins.git.GitSCM',plugin:'git') {
                     'userRemoteConfigs' {
                         'hudson.plugins.git.UserRemoteConfig' {
-                            'url'('https://github.com/dev0ps01/'+j+'.git')
+                            'url'('https://github.com/zssurendra01/jenkins.git')
 
                                    }
                     }
@@ -77,7 +77,7 @@ pipelineJob('CI Pipelines/todo-ci'){
                 'scm'(class:'hudson.plugins.git.GitSCM',plugin:'git') {
                     'userRemoteConfigs' {
                         'hudson.plugins.git.UserRemoteConfig' {
-                            'url'('https://github.com/dev0ps01/'+j+'.git')
+                            'url'('https://github.com/zssurendra01/jenkins.git')
 
                                    }
                     }
