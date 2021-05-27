@@ -71,7 +71,7 @@ pipelineJob('CI Pipelines/login-ci'){
 
 
 
-pipelineJob('CI Pipelines/redis-ci'){
+pipelineJob('CI Pipelines/todo-ci'){
      configure { flowdefinition ->
             flowdefinition << delegate.'definition'(class:'org.jenkinsci.plugins.workflow.cps.CpsScmFlowDefinition',plugin:'workflow-cps') {
                 'scm'(class:'hudson.plugins.git.GitSCM',plugin:'git') {
