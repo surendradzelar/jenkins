@@ -10,7 +10,7 @@ pipelineJob('CI Pipelines/frontend-ci'){
                         'hudson.plugins.git.UserRemoteConfig' {
                             'url'('https://github.com/zssurendra01/frontend.git')
 
-                                   }
+                       }
                     }
                     'branches' {
                         'hudson.plugins.git.BranchSpec' {
