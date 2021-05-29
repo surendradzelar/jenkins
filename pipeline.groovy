@@ -1,12 +1,5 @@
-import hudson.model.*
-import hudson.EnvVars
-import groovy.json.JsonSlurperClassic
-import groovy.json.JsonBuilder
-import groovy.json.JsonOutput
-import groovy.json.*
-import java.net.URL
 
-def call(String COMPONENT) {
+def call (String COMPONENT) {
     pipeline {
     agent {
         label "SLAVE"
@@ -25,10 +18,10 @@ def call(String COMPONENT) {
         }
         stage('seeing artifacts') {
             steps {
-                sh '''
+                sh """
                 echo ${COMPONENT}
                 zip -r frontend.zip *
-                '''
+                """
             }
         }
         stage ('Uploading artifacts to nexus') {
