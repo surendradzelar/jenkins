@@ -3,6 +3,9 @@ def call(String COMPONENT){
     agent {
         label "SLAVE"
     }
+    environment {
+        COMPONENT = COMPONENT
+    }
     stages {
         stage('Download ') {
             steps {
