@@ -1,4 +1,4 @@
-def call(){
+def call(String COMPONENT){
     pipeline {
     agent {
         label "SLAVE"
@@ -15,6 +15,7 @@ def call(){
         stage('seeing artifacts') {
             steps {
                 sh '''
+                echo ${COMPONENT}
                 zip -r frontend.zip *
                 '''
             }
