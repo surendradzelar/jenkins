@@ -1,7 +1,6 @@
 
 def call () {
-
-    pipeline {
+      pipeline {
         agent {
             label 'SLAVE'
       }
@@ -22,5 +21,7 @@ def call () {
             }
         }
     }
-}  
+}
+
+    
 }
