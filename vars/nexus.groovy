@@ -22,7 +22,7 @@ def nexus(COMPONENT) {
 
     }
     else if(APP_TYPE == "java" ) {
-        command =  "cp target/*.jar ${COMPONENT}.jar && zip -r ${FILENAME} ${COMPONENT}.jar"
+        command =  " zip -r ${FILENAME} ${COMPONENT}.jar"
         def execute_com= sh(returnStdout: true, script: command)
         print execute_com
     }
