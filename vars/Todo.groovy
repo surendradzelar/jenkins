@@ -1,36 +1,50 @@
-
-def call (Map params = [ : ]) {
-    def args = [
-        Nexus = '172.31.6.224', 
-    ]
-
-    args << params
-
+ def call(Map params = [:] ) {
+     def args = [
+        NEXUS_IP : '172.31.9.137',
+     ]
+     args << params
     pipeline {
-        agent any 
-
-        environment{
-            COMPONENT = "${args.COMPONENT}"
+        agent {
+            label "${args.SLAVE_LABEL}"
+        }
+    
+        environment {
+            COMPONENT="${args.COMPONENT}"
+            NEXUS_IP = "${args.NEXUS_IP}"
+            PROJECT_NAME = "${args.PROJECT_NAME}"
+            SLAVE_LABEL = "${args.SLAVE_LABEL}"
+            APP_TYPE    = "${args.APP_TYPE}"
         }
         stages {
-            stage('seeing artifacts') {
+            stage('Build code & install dependencies') {
                 steps {
-                  sh '''
-                    echo ${COMPONENT}
-                    zip frontend.zip *
-                    '''
-            }
-        }
-            stage ('Uploading artifacts to nexus') {
-                steps {
-                  sh '''
-                   curl -v -u admin:zelar123 --upload-file frontend.zip http://172.31.6.224:8081/repository/frontend/frontend.zip
-                '''
+                    script {
+                        build = new nexus()
+                        build.code_build("${APP_TYPE}","${COMPONENT}")
+                    }
+                }
 
+            }
+            stage('Prepare Artifacts') {
+
+                steps {
+                    script {
+                        prepare = new nexus()
+                        prepare.make_artifacts("${APP_TYPE}","${COMPONENT}")
+                    }
+                }
+            }
+
+            stage('Upload Artifacts') {
+                steps {
+                    script {
+                        prepare = new nexus()
+                        prepare.nexus(COMPONENT)
+                    }
+
+                }
             }
         }
     }
-}
 
-    
-}
+ }
