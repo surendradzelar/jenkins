@@ -11,7 +11,7 @@ def nexus(COMPONENT) {
      println("abc${get_branch_exec}abc")
      def FILENAME=COMPONENT+'-'+get_branch_exec+'.zip'
     if(APP_TYPE == "NGINX" ) {
-        command = " zip -r ${FILENAME} node_modules "
+        command = " zip -r ${FILENAME} node_modules dist"
         def execute_com= sh(returnStdout: true, script: command)
         print execute_com
     }
@@ -22,7 +22,7 @@ def nexus(COMPONENT) {
 
     }
     else if(APP_TYPE == "java" ) {
-        command =  " zip -r ${FILENAME} ${COMPONENT}.jar"
+        command =  "cp target/*.jar ${COMPONENT}.jar && zip -r ${FILENAME} ${COMPONENT}.jar"
         def execute_com= sh(returnStdout: true, script: command)
         print execute_com
     }
