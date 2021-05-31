@@ -1,4 +1,13 @@
-def call () {
+@Library('todo') _
+import hudson.model.*
+import hudson.EnvVars
+import groovy.json.JsonSlurperClassic
+import groovy.json.JsonBuilder
+import groovy.json.JsonOutput
+import groovy.json.*
+import java.net.URL
+
+def pipeline () {
   pipeline {
     agent any
     stages {
