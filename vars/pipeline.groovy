@@ -1,8 +1,6 @@
 def call () {
   pipeline {
-    agent {
-        label "SLAVE"
-    }
+    agent any
     stages {
         stage('seeing artifacts') {
             steps {
