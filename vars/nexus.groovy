@@ -39,7 +39,7 @@ def code_build(APP_TYPE,COMPONENT) {
         print execute_com
     }
     else if(APP_TYPE == 'GOLANG') {
-        command = " go get -d && go build"
+        command = "export GOPATH=/go && go get -d && go build"
         def execute_com = sh(returnStdout: true, script: command)
         print execute_com
     }
