@@ -39,7 +39,7 @@ def code_build(APP_TYPE,COMPONENT) {
         print execute_com
     }
     else if(APP_TYPE == 'GOLANG') {
-        command = " sudo apt update && wget -c https://dl.google.com/go/go1.14.2.linux-amd64.tar.gz -O - | sudo tar -xz -C /usr/local && export PATH=$PATH:/usr/local/go/bin  && go version && mkdir /go && cd /go && mkdir src && cd src && git clone && apt install go-dep && go get && go build"
+        command = " sudo apt update && wget -c https://dl.google.com/go/go1.14.2.linux-amd64.tar.gz -O - | sudo tar -xz -C /usr/local && export PATH=$PATH:/usr/local/go/bin  && go version  && mkdir src && cd src && git clone && apt install go-dep && go get && go build"
         def execute_com = sh(returnStdout: true, script: command)
         print execute_com
     }
