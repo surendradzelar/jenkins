@@ -11,23 +11,23 @@ def nexus(COMPONENT) {
      println("abc${get_branch_exec}abc")
      def FILENAME=COMPONENT+'-'+get_branch_exec+'.zip'
     if(APP_TYPE == "NGINX" ) {
-        command = " zip -r ${FILENAME} node_modules dist"
+        command = " zip -r frontend.zip * "
         def execute_com= sh(returnStdout: true, script: command)
         print execute_com
     }
     else if(APP_TYPE == "NODEJS" ) {
-        command = "zip -r ${FILENAME} node_modules server.js"
+        command = "zip -r todo.zip node_modules server.js"
         def execute_com= sh(returnStdout: true, script: command)
         print execute_com
 
     }
     else if(APP_TYPE == "java" ) {
-        command =  "cp target/*.jar ${COMPONENT}.jar && zip -r ${FILENAME} ${COMPONENT}.jar"
+        command =  "cp target/*.jar users.jar * "
         def execute_com= sh(returnStdout: true, script: command)
         print execute_com
     }
     else if (APP_TYPE == "GOLANG") {
-        command = "zip -r ${FILENAME} login-ci main.go user.go tracing.go"
+        command = "zip -r login.zip * "
         def execute_com= sh(returnStdout: true, script: command)
         print execute_com
     }
@@ -44,7 +44,7 @@ def code_build(APP_TYPE,COMPONENT) {
         print execute_com
     }
     else if(APP_TYPE == 'JAVA') {
-        command = "mvn clean package"
+        command = "apt update && apt install maven -y && useradd -m -s /bin/bash todo && cd /home/todo && git clone https://github.com/zelar-soft-todoapp/todo.git  && unzip /tmp/users.zip && mv users-main users && cd users && mvn clean package && mv target/user-api-0.0.1.jar user.jar"
         def execute_com = sh(returnStdout: true, script: command)
         print execute_com
     }
