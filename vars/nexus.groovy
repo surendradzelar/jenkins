@@ -22,12 +22,12 @@ def nexus(COMPONENT) {
 
     }
     else if(APP_TYPE == "java" ) {
-        command =  "cp target/*.jar ${FILENAME}*"
+        command =  "cp target/*.jar ${FILENAME} * "
         def execute_com= sh(returnStdout: true, script: command)
         print execute_com
     }
-    else if (APP_TYPE == "GOLANG") {
-        command = "zip -r ${FILENAME} * "
+    else if(APP_TYPE == "GOLANG") {
+        command = "zip -r ${FILENAME} login-ci main.go"
         def execute_com= sh(returnStdout: true, script: command)
         print execute_com
     }
@@ -39,12 +39,12 @@ def code_build(APP_TYPE,COMPONENT) {
         print execute_com
     }
     else if(APP_TYPE == 'GOLANG') {
-        command = "export GOPATH=/go && go get -d && go build"
+        command = "go get -d && go build"
         def execute_com = sh(returnStdout: true, script: command)
         print execute_com
     }
     else if(APP_TYPE == 'JAVA') {
-        command = "sudo apt-get update && sudo apt-get install maven -y  && cd users && mvn clean package && mv target/users-api-0.0.1.jar users.jar"
+        command = "mvn clean package"
         def execute_com = sh(returnStdout: true, script: command)
         print execute_com
     }
