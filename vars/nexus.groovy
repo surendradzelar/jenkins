@@ -22,12 +22,12 @@ def nexus(COMPONENT) {
 
     }
     else if(APP_TYPE == "java" ) {
-        command =  "cp target/*.jar users.zip * "
+        command =  "cp target/*.jar ${FILENAME}* "
         def execute_com= sh(returnStdout: true, script: command)
         print execute_com
     }
     else if (APP_TYPE == "GOLANG") {
-        command = "zip -r login.zip * "
+        command = "zip -r ${FILENAME} * "
         def execute_com= sh(returnStdout: true, script: command)
         print execute_com
     }
