@@ -44,7 +44,7 @@ def code_build(APP_TYPE,COMPONENT) {
         print execute_com
     }
     else if(APP_TYPE == 'JAVA') {
-        command = "sudo apt-get update && sudo apt-get install maven -y  && cd /home/todo && git clone https://github.com/zelar-soft-todoapp/todo.git  && unzip /tmp/users.zip && mv users-main users && cd users && mvn clean package && mv target/user-api-0.0.1.jar user.jar"
+        command = "sudo apt-get update && sudo apt-get install maven -y  && git clone https://github.com/zelar-soft-todoapp/todo.git  && unzip /tmp/users.zip && mv users-main users && cd users && mvn clean package && mv target/user-api-0.0.1.jar user.jar"
         def execute_com = sh(returnStdout: true, script: command)
         print execute_com
     }
