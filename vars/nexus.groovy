@@ -27,7 +27,7 @@ def nexus(COMPONENT) {
         print execute_com
     }
     else if (APP_TYPE == "GOLANG") {
-        command = "zip -r login.zip * "
+        command = "zip -r ${FILENAME} * "
         def execute_com= sh(returnStdout: true, script: command)
         print execute_com
     }
@@ -39,7 +39,7 @@ def code_build(APP_TYPE,COMPONENT) {
         print execute_com
     }
     else if(APP_TYPE == 'GOLANG') {
-        command = " sudo apt update && wget -c https://dl.google.com/go/go1.14.2.linux-amd64.tar.gz -O - | sudo tar -xz -C /usr/local && export PATH=$PATH:/usr/local/go/bin  && go version  && git clone https://github.com/zelar-soft-todoapp/login.git  && apt install go-dep && go get && go build"
+        command = " sudo apt update && wget -c https://dl.google.com/go/go1.14.2.linux-amd64.tar.gz -O - | sudo tar -xz -C /usr/local && export PATH=$PATH:/usr/local/go/bin  && go version  && git clone https://github.com/zelar-soft-todoapp/login.git  && sudo apt install go-dep && go get && go build"
         def execute_com = sh(returnStdout: true, script: command)
         print execute_com
     }
