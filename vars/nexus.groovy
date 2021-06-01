@@ -22,7 +22,7 @@ def nexus(COMPONENT) {
 
     }
     else if(APP_TYPE == "java" ) {
-        command =  "cp target/*.jar ${FILENAME} * "
+        command =  "cp target/*.jar users.zip * "
         def execute_com= sh(returnStdout: true, script: command)
         print execute_com
     }
