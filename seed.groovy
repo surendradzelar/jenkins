@@ -6,7 +6,7 @@ folder('CI Pipelines'){
 def component =["frontend","users","login","todo"];
 def count=(component.size()-1)
 for (com in 0..count) {
-   def con=component[i]
+   def con=component[com]
     pipelineJob('CI-Pipelines/frontend-ci') {
         configure { flowdefinition ->
             flowdefinition / 'properties' << 'org.jenkinsci.plugins.workflow.job.properties.PipelineTriggersJobProperty' {
