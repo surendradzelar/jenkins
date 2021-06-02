@@ -16,6 +16,7 @@ pipelineJob('CI Pipelines/frontend-ci'){
                 'scm'(class:'hudson.plugins.git.GitSCM',plugin:'git') {
                     'userRemoteConfigs' {
                         'hudson.plugins.git.UserRemoteConfig' {
+                            'refspec'('\'+refs/tags/*\':\'refs/remotes/origin/tags/*\'')
                             'url'('https://github.com/zssurendra01/frontend.git')
 
                        }
