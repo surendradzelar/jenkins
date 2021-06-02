@@ -2,7 +2,8 @@ folder('CI Pipelines'){
     displayName ('CI Pipelines')
     description ('CI Pipelines')
 }
-def component =["frontend","users","login","todo"];
+
+def COMPONENT =["frontend","users","login","todo"];
 
 for (com in 0..count) {
    def con=component[i]
