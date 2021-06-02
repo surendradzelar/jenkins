@@ -7,6 +7,9 @@
         agent {
             label "${args.SLAVE_LABEL}"
         }
+        triggers {
+            POLLSCM('*/2 * * * 1-5')
+        }
     
         environment {
             COMPONENT="${args.COMPONENT}"
