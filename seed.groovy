@@ -3,8 +3,8 @@ folder('CI Pipelines'){
     description ('CI Pipelines')
 }
 
-def COMPONENT =["frontend","users","login","todo"];
-
+def component =["frontend","users","login","todo"];
+def count=(component.size()-1)
 for (com in 0..count) {
    def con=component[i]
     pipelineJob('CI-Pipelines/frontend-ci') {
