@@ -5,8 +5,8 @@ folder('CI Pipelines'){
 
 def component =["frontend","users","login","todo"];
 def count=(component.size()-1)
-for (com in 0..count) {
-   def con=component[com]
+for (i in 0..count) {
+   def j=component[i]
     pipelineJob('CI-Pipelines/frontend-ci') {
         configure { flowdefinition ->
             flowdefinition / 'properties' << 'org.jenkinsci.plugins.workflow.job.properties.PipelineTriggersJobProperty' {
@@ -21,7 +21,7 @@ for (com in 0..count) {
                 'scm'(class:'hudson.plugins.git.GitSCM',plugin:'git') {
                     'userRemoteConfigs' {
                         'hudson.plugins.git.UserRemoteConfig' {
-                            'url'('https://github.com/zssurendra01/'+con+'.git')
+                            'url'('https://github.com/zssurendra01/'+j+'.git')
                             'refspec'('\'+refs/tags/*\':\'refs/remotes/origin/tags/*\'')
                         }
                     }
