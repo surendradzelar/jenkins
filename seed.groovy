@@ -3,9 +3,6 @@ folder('CI Pipelines'){
     description ('CI Pipelines')
 }
 
-
-for (i in 0..count) {
-   def j=component[i]
     pipelineJob('CI-Pipelines/frontend-ci') {
         configure { flowdefinition ->
             flowdefinition / 'properties' << 'org.jenkinsci.plugins.workflow.job.properties.PipelineTriggersJobProperty' {
@@ -35,7 +32,7 @@ for (i in 0..count) {
             }
         }
     }
-}
+
 //def COMPONENT =["frontend","users","login","todo"];
 
 for (com in 0..count) {
