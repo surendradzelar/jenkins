@@ -105,7 +105,7 @@ for (com in 0..count) {
     }
 }
 
-def component =["frontend","users","login","todo"];
+//def component["frontend","users","login","todo"];
 
 for (com in 0..count) {
    def con=component[i]
