@@ -60,7 +60,6 @@ pipelineJob('CI Pipelines/users-ci'){
                 'lightweight'(true)
             }
         }
-    }
 
 pipelineJob('CI Pipelines/login-ci'){
      configure { flowdefinition ->
