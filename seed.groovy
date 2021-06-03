@@ -2,16 +2,17 @@ folder('CI Pipelines'){
     displayName ('CI Pipelines')
     description ('CI Pipelines')
 }
+
 pipelineJob('CI Pipelines/frontend-ci'){
-     configure { flowdefinition ->
-            flowdefinition / 'properties' << 'org.jenkinsci.plugins.workflow.job.properties.PipelineTriggersJobProperty' {
-                'triggers' {
-                    'hudson.triggers.SCMTrigger' {
-                        'spec'('* * * * 1-5')
-                        'ignorePostCommitHooks'(false)
-                    }
+    configure { flowdefinition ->
+    flowdefinition / 'properties' << 'org.jenkinsci.plugins.workflow.job.properties.PipelineTriggersJobProperty' {
+        'triggers' {
+            'hudson.triggers.SCMTrigger' {
+                'spec'('* * * * 1-5')
+                'ignorePostCommitHooks'(false)
                 }
-           }
+                }
+                }
             flowdefinition << delegate.'definition'(class:'org.jenkinsci.plugins.workflow.cps.CpsScmFlowDefinition',plugin:'workflow-cps') {
                 'scm'(class:'hudson.plugins.git.GitSCM',plugin:'git') {
                     'userRemoteConfigs' {
