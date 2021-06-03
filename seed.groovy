@@ -90,7 +90,6 @@ pipelineJob('CI Pipelines/login-ci'){
                 'lightweight'(true)
             }
         }
-    }
 
 
 
