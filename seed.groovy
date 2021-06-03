@@ -122,5 +122,4 @@ pipelineJob('CI Pipelines/todo-ci'){
                 'scriptPath'('jenkinsfile')
                 'lightweight'(true)
             }
-        }
-    }   
+        }  
