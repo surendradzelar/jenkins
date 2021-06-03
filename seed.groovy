@@ -32,6 +32,7 @@ pipelineJob('CI Pipelines/frontend-ci'){
             }
         }
     }
+    }
 pipelineJob('CI Pipelines/users-ci'){
      configure { flowdefinition ->
             flowdefinition / 'properties' << 'org.jenkinsci.plugins.workflow.job.properties.PipelineTriggersJobProperty' {
