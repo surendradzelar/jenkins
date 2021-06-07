@@ -17,14 +17,15 @@ pipelineJob('CI Pipelines/frontend-ci'){
                 'scm'(class:'hudson.plugins.git.GitSCM',plugin:'git') {
                     'userRemoteConfigs' {
                         'hudson.plugins.git.UserRemoteConfig' {
-                            //'refspec'('\'+refs/tags/*\':\'refs/remotes/origin/tags/*\'')
                             'url'('https://github.com/zssurendra01/frontend.git')
+                             'refspec'('\'+refs/tags/*\':\'refs/remotes/origin/tags/*\'')
+
 
                        }
                     }
                     'branches' {
                         'hudson.plugins.git.BranchSpec' {
-                            'name'('*/main')
+                            'name'('*/tags/*')
                         }
                     }
                 }
@@ -113,14 +114,14 @@ pipelineJob('CI Pipelines/todo-ci'){
                 'scm'(class:'hudson.plugins.git.GitSCM',plugin:'git') {
                     'userRemoteConfigs' {
                         'hudson.plugins.git.UserRemoteConfig' {
-                            //'refspec'('\'+refs/tags/*\':\'refs/remotes/origin/tags/*\'')
                             'url'('https://github.com/zssurendra01/todo.git')
+                            'refspec'('\'+refs/tags/*\':\'refs/remotes/origin/tags/*\'')
 
                                    }
                     }
                     'branches' {
                         'hudson.plugins.git.BranchSpec' {
-                            'name'('*/main')
+                            'name'('*/tags/*')
                         }
                     }
                 }
