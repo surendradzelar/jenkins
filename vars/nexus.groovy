@@ -26,7 +26,7 @@ def nexus(COMPONENT) {
         def execute_com= sh(returnStdout: true, script: command)
         print execute_com
     }
-    else if(APP_TYPE == "GOLANG") {
+    else if(APP_TYPE == "NODEJS") {
         command = "zip -r ${FILENAME} login-ci main.go"
         def execute_com= sh(returnStdout: true, script: command)
         print execute_com
@@ -38,7 +38,7 @@ def code_build(APP_TYPE,COMPONENT) {
         def execute_com= sh(returnStdout: true, script: command)
         print execute_com
     }
-    else if(APP_TYPE == "GOLANG") {
+    else if(APP_TYPE == "NODEJS") {
         command ="go build"
         def execute_com = sh(returnStdout: true, script: command)
         print execute_com
