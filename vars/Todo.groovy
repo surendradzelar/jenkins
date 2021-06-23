@@ -44,6 +44,14 @@
 
                 }
             }
+            stage('Depoly dev env') {
+                when {
+                    ----
+                }
+                steps{
+                    sh '''ansible-playbook'''
+                }
+            }
         }
     }
 

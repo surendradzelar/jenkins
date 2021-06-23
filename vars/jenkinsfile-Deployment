@@ -1,0 +1,25 @@
+pipeline {
+    
+    agent{
+        label = "ansible"
+    }
+
+    stages{
+        stage('find the server'){
+            when {
+                ---------
+            }
+            steps {
+                sh '''echo ansible-playbook'''
+            }
+        stage('deploying to prod env){
+            when {
+                ----
+            }
+            steps {
+                sh '''ansible-playbook'''
+            }
+        }
+        }
+    }
+}
