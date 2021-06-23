@@ -45,7 +45,7 @@ for (i in 0..count) {
 
 
 
-pipelineJob("DEPLOYMENT-PIPELINES") {
+pipelineJob("DEPLOYMENT-PIPELINES-ci") {
     configure { flowdefinition ->
       flowdefinition / 'properties' << 'org.jenkinsci.plugins.workflow.job.properties.PipelineTriggersJobProperty' {
         //'triggers' {
