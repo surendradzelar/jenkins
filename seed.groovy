@@ -67,7 +67,7 @@ pipelineJob("DEPLOYMENT-PIPELINES-ci") {
           }
           'branches' {
             'hudson.plugins.git.BranchSpec' {
-              'name'('*/tags/*')
+              'name'('*/main')
             }
           }
         }
