@@ -63,7 +63,7 @@ pipelineJob("DEPLOYMENT-PIPELINES-ci") {
             }
           }
         }
-        'scriptPath'('Jenkinsfile')
+        'scriptPath'('jenkins-deployment')
         'lightweight'(true)
       }
     }
