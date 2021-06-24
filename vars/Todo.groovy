@@ -44,14 +44,14 @@
 
                 }
             }
-           // stage('Depoly dev env') {
-                //when {
+            stage('Depoly dev env') {
+                when {
                 
-                //}
-             //   steps{
-               //     sh '''ansible-playbook'''
-                //}
-            //}
+                }
+                steps{
+                    sh '''ansible-playbook'''
+                }
+            }
         }
     }
 

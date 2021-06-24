@@ -1,28 +1,28 @@
-//pipeline {
+pipeline {
     
-  //  agent{
-    //    label = "Ansible"
-    //}
-    //parameters {
-      //   choice(name: 'ENV', choices: ['dev', 'prod',], description: 'Pick the environement')
-    //}
+    agent{
+        label = "Ansible"
+    }
+    parameters {
+         choice(name: 'ENV', choices: ['dev', 'prod',], description: 'Pick the environement')
+    }
 
-    //stages{
-      //  stage('find the server'){
-        //    when {
-          //      environment name: 'ENV', value: 'dev'
-           // }
-            //steps {
-              //  sh ' echo ansible-playbook '
-            //}
-        //stage('deploying to prod env){
-          //  when {
-            //    environment name: 'ENV', value: 'prod'
-            //}
-            //steps {
-              //  sh ' echo ansible-playbook '
-            //}
-        //}
-        //}
-    //}
-//}
+    stages{
+        stage('find the server') {
+            when {
+                environment name: 'ENV', value: 'dev'
+            }
+            steps {
+                sh ' echo ansible-playbook '
+            }
+        stage('deploying to prod env') {
+            when {
+                environment name: 'ENV', value: 'prod'
+            }
+            steps {
+                sh ' echo ansible-playbook '
+            }
+        }
+        }
+    }
+}
