@@ -52,9 +52,6 @@ pipelineJob("DEPLOYMENT-PIPELINES-ci") {
           'userRemoteConfigs' {
             'hudson.plugins.git.UserRemoteConfig' {
               'url'('https://github.com/zssurendra01/jenkins.git')
-              //'refspec'('\'+refs/tags/*\':\'refs/remotes/origin/tags/*\'')
-
-
             }
           }
           'branches' {
@@ -63,7 +60,7 @@ pipelineJob("DEPLOYMENT-PIPELINES-ci") {
             }
           }
         }
-        'scriptPath'('jenkins-deployment')
+        'scriptPath'('jenkinsfile-deployment')
         'lightweight'(true)
       }
     }
