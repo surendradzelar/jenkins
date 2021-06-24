@@ -45,11 +45,9 @@
                 }
             }
             stage('Depoly dev env') {
-                when {
                 
-                }
                 steps{
-                    sh '''ansible-playbook'''
+                    sh 'build job : 'deplyment pipeline', parameters: [string(name:'ENV',value:'dev') string(name:'COMPONENT', value: '${COMPONENT}'),string(name:'version',value:'${get_branch_exec}')]
                 }
             }
         }
