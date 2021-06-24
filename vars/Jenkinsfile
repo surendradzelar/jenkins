@@ -4,7 +4,8 @@ pipeline {
         label = "Ansible"
     }
     parameters {
-         choice(name: 'ENV', choices: ['dev', 'prod',], description: 'Pick the environement')
+         choice(name: 'ENV', choices: ['dev', 'prod',], description: 'Pick the environement'),
+        string(name: 'PERSON', defaultValue: 'Mr Jenkins', description: 'Who should I say hello to?')
     }
 
     stages{
