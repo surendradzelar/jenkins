@@ -47,7 +47,8 @@
             stage('Depoly dev env') {
                 
                 steps{
-                    sh 'build job : 'deplyment pipeline', parameters: [string(name:'ENV',value:'dev') string(name:'COMPONENT', value: '${COMPONENT}'),string(name:'version',value:'${get_branch_exec}')]
+                    sh 'build job : 'deplyment pipeline', 
+                    parameters: [string(name:'ENV',value:'dev') string(name:'COMPONENT', value:'${COMPONENT}') string(name:'version', value:"${get_branch_exec}")]
                 }
             }
         }
