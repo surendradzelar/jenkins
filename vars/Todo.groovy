@@ -1,51 +1,57 @@
-pipeline {
-    agent {
-        label "ANSIBLE"
-    }
-
-    environment {
-        UBUNTU_SSH_PASSWORD = credentials('UBUNTU_SSH_PASSWORD')
-    }
-
-    parameters {
-        choice(name: 'ENV', choices: ['dev', 'prod' ], description: 'Select Environment')
-        string(name: 'COMPONENT', defaultValue: '', description: 'Which Component to deploy')
-        string(name: 'VERSION', defaultValue: '', description: 'Which Version of Component to deploy')
-    }
-
-    stages {
-
-        stage('Find the Server') {
-            steps {
-                addShortText background: 'yellow', color: 'black', borderColor: 'yellow', text: "ENV = ${ENV}"
-                addShortText background: 'yellow', color: 'black', borderColor: 'yellow', text: "COMPONENT = ${COMPONENT}"
-                addShortText background: 'yellow', color: 'black', borderColor: 'yellow', text: "VERSION = ${VERSION}"
-                sh '''
-                    aws ec2 describe-instances --filters "Name=tag:Name,Values=${COMPONENT}-${ENV}" --region us-east-1 | jq .Reservations[].Instances[].PrivateIpAddress |xargs -n1 > inv
-                '''
-            }
+ def call(Map params = [:] ) {
+     def args = [
+        NEXUS_IP : '172.31.15.207', 
+     ]
+     args << params
+    pipeline {
+        agent {
+            label "${args.SLAVE_LABEL}"
         }
-
-        stage('Deploy to DEV Env') {
-            when {
-                environment name: 'ENV', value: 'dev'
-            }
-            steps {
-                git branch: 'main', url: 'https://github.com/zssurendra01/ansible.git'
-                sh '''
-                    ansible-playbook -i inv Todo.yml -t ${COMPONENT} -e COMPONENT=${COMPONENT} -e ENV=${ENV} -e APP_VERSION=${VERSION} 
-                '''
-            }
+    
+        environment {
+            COMPONENT ="${args.COMPONENT}"
+            NEXUS_IP = "${args.NEXUS_IP}"
+            PROJECT_NAME = "${args.PROJECT_NAME}"
+            SLAVE_LABEL = "${args.SLAVE_LABEL}"
+            APP_TYPE    = "${args.APP_TYPE}"
         }
+        stages {
+            stage('Build code & install dependencies') {
+                steps {
+                    script {
+                        build = new nexus()
+                        build.code_build("${APP_TYPE}","${COMPONENT}")
+                    }
+                }
 
-        stage('Deploy to PROD Env') {
-            when {
-                environment name: 'ENV', value: 'prod'
             }
-            steps {
-                sh 'echo ansible-playbook .....'
+            stage('Prepare Artifacts') {
+
+                steps {
+                    script {
+                        prepare = new nexus()
+                        prepare.make_artifacts("${APP_TYPE}","${COMPONENT}")
+                    }
+                }
             }
+
+            stage('Upload Artifacts') {
+                steps {
+                    script {
+                        prepare = new nexus()
+                        prepare.nexus(COMPONENT)
+                    }
+
+                }
+            }
+            //stage('Depoly dev env') {
+                
+              //  steps{
+                //    sh '''build job : 'deployment pipeline'''
+                  //  parameters: [string(name:'ENV',value:'dev') string(name:'COMPONENT', value:'${COMPONENT}') string(name:'version', value:"${get_branch_exec}")]
+                //}
+            //}
         }
-
     }
-}
+
+ }
