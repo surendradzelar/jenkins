@@ -3,7 +3,9 @@ pipeline {
         label "ANSIBLE"
     }
 
-    
+    environment {
+        UBUNTU_SSH_PASSWORD = credentials('UBUNTU_SSH_PASSWORD')
+    }
 
     parameters {
         choice(name: 'ENV', choices: ['dev', 'prod' ], description: 'Select Environment')
@@ -13,7 +15,7 @@ pipeline {
 
     stages {
 
-         stage('Find the Server') {
+        stage('Find the Server') {
             steps {
                 addShortText background: 'yellow', color: 'black', borderColor: 'yellow', text: "ENV = ${ENV}"
                 addShortText background: 'yellow', color: 'black', borderColor: 'yellow', text: "COMPONENT = ${COMPONENT}"
@@ -29,9 +31,9 @@ pipeline {
                 environment name: 'ENV', value: 'dev'
             }
             steps {
-                git branch: 'main', url: 'https://github.com/zssurendra01/ansible.git'
+                git branch: 'main', url: 'https://github.com/surendradzelar/ansible.git'
                 sh '''
-                    ansible-playbook -i inv Todo.yml -t ${COMPONENT} -e COMPONENT=${COMPONENT} -e ENV=${ENV} -e APP_VERSION=${VERSION} -e ansible_password=DevOps321
+                    ansible-playbook -i inv roboshop.yml -t ${COMPONENT} -e COMPONENT=${COMPONENT} -e ENV=${ENV} -e APP_VERSION=${VERSION} -e ansible_password=${UBUNTU_SSH_PASSWORD}
                 '''
             }
         }
@@ -47,4 +49,3 @@ pipeline {
 
     }
 }
-
