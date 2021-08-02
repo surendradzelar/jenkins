@@ -9,20 +9,15 @@ pipeline {
 
     parameters {
         choice(name: 'ENV', choices: ['dev', 'prod' ], description: 'Select Environment')
-        string(name: 'COMPONENT', defaultValue: '', description: 'Which Component to deploy')
-        string(name: 'VERSION', defaultValue: '', description: 'Which Version of Component to deploy')
+        string(name: 'COMPONENT', defaultValue: '', description: 'which Component to deploy')
+        string(name: 'VERSION', defaultValue: '', description: 'which  Component version to deploy')
     }
 
     stages {
 
         stage('Find the Server') {
-            steps {
-                addShortText background: 'yellow', color: 'black', borderColor: 'yellow', text: "ENV = ${ENV}"
-                addShortText background: 'yellow', color: 'black', borderColor: 'yellow', text: "COMPONENT = ${COMPONENT}"
-                addShortText background: 'yellow', color: 'black', borderColor: 'yellow', text: "VERSION = ${VERSION}"
-                sh '''
-                    aws ec2 describe-instances --filters "Name=tag:Name,Values=${COMPONENT}-${ENV}" --region us-east-1 | jq .Reservations[].Instances[].PrivateIpAddress |xargs -n1 > inv
-                '''
+            steps{
+                sh 'aws s3 ls'
             }
         }
 
