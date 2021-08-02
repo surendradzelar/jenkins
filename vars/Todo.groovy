@@ -44,13 +44,13 @@
 
                 }
             }
-            //stage('Depoly dev env') {
+            stage('Depoly DEV env') {
                 
-              //  steps{
-                //    sh '''build job : 'deployment pipeline'''
-                  //  parameters: [string(name:'ENV',value:'dev') string(name:'COMPONENT', value:'${COMPONENT}') string(name:'version', value:"${get_branch_exec}")]
-                //}
-            //}
+                steps{
+                    sh '''build job : 'deployment pipeline'''
+                    parameters: [string(name:'ENV',value:'dev') string(name:'COMPONENT', value:'${COMPONENT}') string(name:'version', value:"${get_branch_exec}")]
+                }
+            }
         }
     }
 
