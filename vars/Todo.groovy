@@ -47,12 +47,8 @@
             stage('Depoly DEV env') {
                 
                 steps{
-                    get_branch = "env | grep GIT_BRANCH | awk -F / '{print \$NF}' | xargs echo -n"
-                    def get_branch_exec=sh(returnStdout: true, script: get_branch)
-                    print "${get_branch_exe}"
-
-                    //sh 
-                    //'''build job : '''',parameters: [string(name:'ENV',value:'dev') string(name:'COMPONENT', value:'${COMPONENT}') string(name:'version', value:"${get_branch_exec}")]
+                    sh '''build job : 'DEPLOYMENT-PIPELINES'''
+                    parameters: [string(name:'ENV',value:'dev') string(name:'COMPONENT', value:"${COMPONENT}") string(name:'version', value:"${get_branch_exec}")]
                 }
             }
         }
