@@ -51,7 +51,7 @@ pipelineJob("DEPLOYMENT-PIPELINES") {
         'scm'(class:'hudson.plugins.git.GitSCM',plugin:'git') {
           'userRemoteConfigs' {
             'hudson.plugins.git.UserRemoteConfig' {
-              'url'('https://github.com/zssurendra01/jenkins.git')
+              'url'('https://github.com/surendradzelar/jenkins.git')
             }
           }
           'branches' {
