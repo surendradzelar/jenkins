@@ -1,6 +1,6 @@
-folder('CI-Pipelines') {
-  displayName('CI Pipelines')
-  description('CI Pipelines')
+folder('ci-pipelines') {
+  displayName('ci pipelines')
+  description('ci pipelines')
 }
 
 def component = ["todo", "login","users","frontend"];
@@ -8,7 +8,7 @@ def component = ["todo", "login","users","frontend"];
 def count=(component.size()-1)
 for (i in 0..count) {
   def j=component[i]
-  pipelineJob("CI-Pipelines/${j}-ci") {
+  pipelineJob("ci-pipelines/${j}-ci") {
     configure { flowdefinition ->
       flowdefinition / 'properties' << 'org.jenkinsci.plugins.workflow.job.properties.PipelineTriggersJobProperty' {
         //'triggers' {
