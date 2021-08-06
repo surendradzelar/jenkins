@@ -1,49 +1,24 @@
-pipeline {
-    agent {
+pipeline{
+    agent{
         label "ANSIBLE"
     }
-
-
-    parameters {
-        choice(name: 'ENV', choices: ['dev', 'prod' ], description: 'Select Environment')
-        string(name: 'COMPONENT', defaultValue: '', description: 'which Component to deploy')
-        string(name: 'VERSION', defaultValue: '', description: 'which  Component version to deploy')
-    }
-
-    stages {
-
-        stage('Find the Server') {
-            steps {
-                addShortText background: 'yellow', color: 'black', borderColor: 'yellow', text: "ENV = ${ENV}"
-                addShortText background: 'yellow', color: 'black', borderColor: 'yellow', text: "COMPONENT = ${COMPONENT}"
-                addShortText background: 'yellow', color: 'black', borderColor: 'yellow', text: "VERSION = ${VERSION}"
-                sh '''
-                    aws ec2 describe-instances --filters "Name=tag:Name,Values=${COMPONENT}-${ENV}" --region us-east-1 | jq .Reservations[].Instances[].PrivateIpAddress |xargs -n1 > inv
-                '''
+    stages{
+        stage('Find The server'){
+            steps{
+                sh "echo"
+            }
+            stage('Deploy to DEV ENV) {
+                when(-----)
+                steps{
+                    echo "ansible-playbook-------"
+                }
+            }
+            stage('Deploy To PROD ENV) {
+                when (----)
+                steps{
+                    echo "ansible-playbood---------"
+                }
             }
         }
-
-        stage('Deploy to DEV Env') {
-            when {
-                environment name: 'ENV', value: 'dev'
-            }
-            steps {
-                git branch: 'main', url: 'https://github.com/surendradzelar/ansible.git'
-                sh '''
-                ls
-                    ansible-playbook -i inv Todo.yml  -t ${COMPONENT} -e COMPONENT=${COMPONENT} -e ENV=${ENV} -e APP_VERSION=${VERSION} -e ansible_password=${UBUNTU_SSH_PASSWORD}
-                '''
-            }
-        }
-
-        stage('Deploy to PROD Env') {
-            when {
-                environment name: 'ENV', value: 'prod'
-            }
-            steps {
-                sh 'echo ansible-playbook .....'
-            }
-        }
-
     }
 }
