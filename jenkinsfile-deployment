@@ -18,9 +18,9 @@ pipeline{
                 sh '''aws ec2 describe-instances --filters "Name=tag:Name,Values=${COMPONENT}-${ENV}" --region us-east-1 | jq .Reservations[].Instances[].PrivateIpAddress | xargs -n1 > inv'''
             }
         }
-            stage('Deploy to DEV env'){
+            stage('Deploy to dev env'){
                 when{
-                environment name: 'ENV', value: 'dev'
+                environment name: 'ENV', value: 'DEV'
 
                 }
                 steps{
@@ -30,9 +30,9 @@ pipeline{
                    '''
                 }
             }
-            stage('Deploy To PROD env') {
+            stage('Deploy To prod env') {
                 when {
-                environment name: 'ENV', value: 'prod'
+                environment name: 'ENV', value: 'PROD'
                 }
                 steps{
                     sh "echo ansible-playbood---------"
