@@ -26,7 +26,8 @@ pipeline{
                 steps{
                     git branch: 'main',url:'https://github.com/surendradzelar/ansible.git'
                    sh '''
-                   ansible-playbook -i inv roboshop.yml -e ENV=${ENV} -e APP_VERSION=${VERSION} -e ansible_password=${UBUNTU_SSH_PASSWORD} -t ${COMPONENT} -e COMPONENT=${COMPONENT}
+
+                   ansible-playbook -i inv Todo.yml -e ENV=${ENV} -e APP_VERSION=${VERSION} -e ansible_password=${UBUNTU_SSH_PASSWORD} -t ${COMPONENT} -e COMPONENT=${COMPONENT}
                    '''
                 }
             }
