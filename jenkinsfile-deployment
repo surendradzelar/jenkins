@@ -12,7 +12,7 @@ pipeline{
 
         stage('Find The server'){
             steps{
-                sh "aws s3 ls"
+                sh 'aws ec2 describe-instances --filters "Name=tag:Name,Values=frontend-dev" --region us-east-1'
             }
         }
             stage('Deploy to DEV ENV'){
