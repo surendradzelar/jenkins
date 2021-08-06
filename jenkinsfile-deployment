@@ -12,7 +12,7 @@ pipeline{
 
         stage('Find The server'){
             steps{
-                sh '''aws ec2 describe-instances --filters "Name=tag:Name,Values=users-dev" --region us-east-1 | jq .Reservations[].Instances[].PrivateIpAddress | xargs -n1 > inv'''
+                sh '''aws ec2 describe-instances --filters "Name=tag:Name,Values=${COMPONENT}" --region us-east-1 | jq .Reservations[].Instances[].PrivateIpAddress | xargs -n1 > inv'''
             }
         }
             stage('Deploy to DEV ENV'){
