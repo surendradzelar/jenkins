@@ -7,7 +7,7 @@ pipeline{
             steps{
                 sh "echo"
             }
-            stage('Deploy to DEV ENV) {
+            stage('Deploy to DEV ENV){
                 when(-----)
                 steps{
                     echo "ansible-playbook-------"
