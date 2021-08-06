@@ -2,21 +2,29 @@ pipeline{
     agent{
         label "ANSIBLE"
     }
+    parameters {
+        choice(name: 'ENV', choices: ['DEV', 'PROD', ], description: 'finding the env')
+    }
     stages{
         stage('Find The server'){
             steps{
                 sh "echo"
             }
             stage('Deploy to DEV ENV'){
-                when( ----- )
+                when{
+                environment name: 'ENV', value: 'DEV'
+
+                }
                 steps{
-                    echo "ansible-playbook-------"
+                   sh "echo ansible-playbook-------"
                 }
             }
             stage('Deploy To PROD ENV') {
-                when ( ---- )
+                when {
+                environment name: 'ENV', value: 'PROD'
+                }
                 steps{
-                    echo "ansible-playbood---------"
+                    sh "echo ansible-playbood---------"
                 }
             }
         }
