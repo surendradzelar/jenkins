@@ -24,7 +24,8 @@ pipeline{
                     git branch: 'main',url:'https://github.com/surendradzelar/ansible.git'
                    sh '''
                    cat inv
-                   ansible-playbook -i inv todo.yml  -t ${COMPONENT} -e ${COMPONENT}=COMPONENT -e ENV=${ENV} -e APP_VERSION=${VERSION}
+                    ansible-playbook -i inv  Todo.yml -e ENV=${ENV}  -t ${COMPONENT}=COMPONENT -e APP_VERSION=${VERSION}
+
                    '''
                 }
             }
