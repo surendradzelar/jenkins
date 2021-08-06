@@ -2,6 +2,9 @@ pipeline{
     agent{
         label "ANSIBLE"
     }
+     environment { 
+                UBUNTU_SSH_PASSWORD = credentials('UBUNTU_SSH_PASSWORD') 
+            }
     parameters {
         
         choice(name: 'ENV', choices: ['DEV', 'PROD', ], description: 'finding the env')
