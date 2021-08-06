@@ -18,6 +18,7 @@
         stages {
             stage('Build code & install dependencies') {
                 steps {
+                    sh "env"
                     script {
                         build = new nexus()
                         build.code_build("${APP_TYPE}","${COMPONENT}")
@@ -44,13 +45,16 @@
 
                 }
             }
-            //stage('Depoly DEV env') {
+            stage('Depoly DEV env') {
                 
-                //steps{
-                  //  sh '''build job : 'DEPLOYMENT-PIPELINES'''
-                    //parameters: [string(name:'ENV',value:'dev') string(name:'COMPONENT', value:"${COMPONENT}") string(name:'version', value:"${get_branch_exec}")]
-                //}
-           // }
+                steps{
+                    get_branch = "env | grep GIT_BRANCH | awk -F / '{print \$NF}' | xargs echo -n"
+                    def get_branch_exec=sh(returnStdout: true, script: get_branch)
+                    println"${get_branch_exec}"
+                  //sh '''build job : 'DEPLOYMENT-PIPELINES'''
+                   // parameters: [string(name:'ENV',value:'dev') string(name:'COMPONENT', value:"${COMPONENT}") string(name:'version', value:"${get_branch_exec}")]
+                }
+           }
         }
     }
 
