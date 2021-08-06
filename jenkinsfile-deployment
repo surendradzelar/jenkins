@@ -18,7 +18,7 @@ pipeline{
                 sh '''aws ec2 describe-instances --filters "Name=tag:Name,Values=${COMPONENT}-${ENV}" --region us-east-1 | jq .Reservations[].Instances[].PrivateIpAddress | xargs -n1 > inv'''
             }
         }
-            stage('Deploy to DEV ENV'){
+            stage('Deploy to dev env'){
                 when{
                 environment name: 'ENV', value: 'DEV'
 
@@ -30,7 +30,7 @@ pipeline{
                    '''
                 }
             }
-            stage('Deploy To PROD ENV') {
+            stage('Deploy To prod env') {
                 when {
                 environment name: 'ENV', value: 'PROD'
                 }
