@@ -6,10 +6,12 @@ pipeline{
         choice(name: 'ENV', choices: ['DEV', 'PROD', ], description: 'finding the env')
     }
     stages{
+
         stage('Find The server'){
             steps{
                 sh "echo"
             }
+        }
             stage('Deploy to DEV ENV'){
                 when{
                 environment name: 'ENV', value: 'DEV'
@@ -29,4 +31,4 @@ pipeline{
             }
         }
     }
-}
+
