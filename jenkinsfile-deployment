@@ -21,7 +21,7 @@ pipeline{
 
                 }
                 steps{
-                   sh "echo ansible-playbook-------"
+                   sh "cat inv"
                 }
             }
             stage('Deploy To PROD ENV') {
