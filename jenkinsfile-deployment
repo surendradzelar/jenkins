@@ -8,13 +8,13 @@ pipeline{
                 sh "echo"
             }
             stage('Deploy to DEV ENV'){
-                when(-----)
+                when( ----- )
                 steps{
                     echo "ansible-playbook-------"
                 }
             }
             stage('Deploy To PROD ENV') {
-                when (----)
+                when ( ---- )
                 steps{
                     echo "ansible-playbood---------"
                 }
