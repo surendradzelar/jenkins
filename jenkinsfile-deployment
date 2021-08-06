@@ -21,7 +21,11 @@ pipeline{
 
                 }
                 steps{
-                   sh "cat inv"
+                    git branch: 'main',url:'https://github.com/surendradzelar/ansible.git'
+                   sh '''
+                   cat inv
+                   ansible-playbook -i inv Todo.yml -t ${COMPONENT} -e ${COMPONENT}=COMPONENT -e ENV=${ENV} -e APP_VERSION=${VERSION}
+                   '''
                 }
             }
             stage('Deploy To PROD ENV') {
