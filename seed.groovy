@@ -23,7 +23,7 @@ for (i in 0..count) {
           'userRemoteConfigs' {
             'hudson.plugins.git.UserRemoteConfig' {
               'url'('https://github.com/surendradzelar/'+j+'.git')
-              'refspec'('\'+refs/tags/*\':\'refs/remotes/origin/tags/*\'')
+              //'refspec'('\'+refs/tags/*\':\'refs/remotes/origin/tags/*\'')
 
 
             }
@@ -52,6 +52,7 @@ pipelineJob("DEPLOYMENT-PIPELINES") {
           'userRemoteConfigs' {
             'hudson.plugins.git.UserRemoteConfig' {
               'url'('https://github.com/surendradzelar/jenkins.git')
+              'refspec'('\'+refs/tags/*\':\'refs/remotes/origin/tags/*\'')
             }
           }
           'branches' {
