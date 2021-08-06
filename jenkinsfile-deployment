@@ -23,10 +23,6 @@ pipeline{
                 steps{
                     git branch: 'main',url:'https://github.com/surendradzelar/ansible.git'
                    sh '''
-                   cat inv
-                   ls
-                   cd ansible
-                   ls
                    ansible-playbook -i inv Todo.yml  -t ${COMPONENT} -e COMPONENT=${COMPONENT} -e ENV=${ENV} -e APP_VERSION=${VERSION}
                    '''
                 }
