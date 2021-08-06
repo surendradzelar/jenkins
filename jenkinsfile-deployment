@@ -3,7 +3,10 @@ pipeline{
         label "ANSIBLE"
     }
     parameters {
+        
         choice(name: 'ENV', choices: ['DEV', 'PROD', ], description: 'finding the env')
+        string(name: 'COMPONENT', defaultValue: ' ', description: 'Which component is deploy')
+        string(name: 'VERSION', defaultValue: ' ', description: 'Which version of the component is to be deploy')
     }
     stages{
 
