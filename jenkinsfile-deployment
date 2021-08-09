@@ -2,9 +2,10 @@ pipeline{
     agent{
         label "ANSIBLE"
     }
-     environment { 
-                UBUNTU_SSH_PASSWORD = credentials('UBUNTU_SSH_PASSWORD') 
-            }
+    // environment { 
+      //          UBUNTU_SSH_PASSWORD = credentials('UBUNTU_SSH_PASSWORD') 
+        //    }
+
     parameters {
         
         choice(name: 'ENV', choices: ['dev', 'prod', ], description: 'finding the env')
@@ -30,7 +31,7 @@ pipeline{
                 }
                 steps{
                     git branch: 'main', url:'https://github.com/surendradzelar/ansible.git'
-                   sh ' ansible-playbook -i inv Todo.yml -t ${COMPONENT} -e COMPONENT=${COMPONENT} -e ENV=${ENV} -e APP_VERSION=${VERSION} -e ansible_password=${UBUNTU_SSH_PASSWORD}' 
+                   sh ' ansible-playbook -i inv Todo.yml -t ${COMPONENT} -e COMPONENT=${COMPONENT} -e ENV=${ENV} -e APP_VERSION=${VERSION} -e ansible_password=DevOps321' 
                     
                 }
             }
