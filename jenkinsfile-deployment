@@ -31,7 +31,7 @@ pipeline{
                 steps{
                     git branch: 'main', url:'https://github.com/surendradzelar/ansible.git'
 
-                   sh ' ansible-playbook -i inv Todo.yml -t frontend -e COMPONENT=frontend -e ENV=${ENV} -e APP_VERSION=0.0.1 -e ansible_password=${UBUNTU_SSH_PASSWORD}' 
+                   sh ' ansible-playbook -i inv todo.yml -t frontend -e COMPONENT=frontend -e ENV=${ENV} -e APP_VERSION=0.0.1 -e ansible_password=${UBUNTU_SSH_PASSWORD}' 
                     
                 }
             }
